@@ -1,0 +1,122 @@
+form {
+  justify-content: center;
+  align-items: center;
+  max-width: 350px;
+  
+  padding: 0.4rem;
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Etiquetas */
+.form__label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+}
+
+/* Campos de entrada */
+.form__input,
+.form__select,
+.form__textarea {
+  width: 80%;
+  
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: black;
+    
+}
+
+/* Radios y checkbox */
+.form__option,
+.form__checkbox {
+  display: block;
+  margin: 0.5rem 0;
+  
+}
+
+.form__button {
+  position: relative;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #0083b0;
+  color: white;
+  overflow: hidden; 
+}
+
+.form__button .sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle-animation 1.2s infinite;
+        
+}
+
+.magic-boton {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 14px 30px;
+  position: relative;
+  font-size: 10px;
+  background-color: #ffd700; 
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 10px #ffd700, 0 0 20px #ffc400;
+  transition: transform 0.1s;
+  height: 20px;
+  width: 320px;
+}
+  .magic-boton:active {
+  transform: scale(0.97);
+}
+.magic-boton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+.magic-boton:active::after {
+  animation: sparkle 0.5s ease-out;
+}
+@keyframes sparkle {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* juntar en la misma linea el si y no */
+.form__option {
+  display: inline-block;
+  margin-right: 1rem; 
+}

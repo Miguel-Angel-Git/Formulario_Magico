@@ -1,0 +1,25 @@
+.card {
+  align-items: center;
+  justify-content: center;
+  max-width: 350px;
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: 10px 20px 15px #0083b0;
+  background: linear-gradient(to right, #23abc9, #0083b0); 
+  font-family: sans-serif;
+  border: 2px solid #0083b0;
+  font-size: 10px;
+  text-align: center;
+  color: white;
+      #titulo {
+      text-decoration: overline;
+      text-decoration-line:overline;
+      text-decoration-style: dotted;
+        }
+
+}
+
+.card-darkmode {
+  color: white;
+  border-color: #444;
+}

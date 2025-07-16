@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/card.css">
+  <title>Ejercicio: Formulario Mágico</title>
+</head>
+
+<body>
+  <main class="card">
+    <h2 id="titulo">¡Inscripción al Club de Magia Moderna! 🪄</h2>
+
+    <form class="form">
+      <label for="nombre" class="form__label">Nombre mágico</label>
+      <input type="text" id="nombre" class="form__input" placeholder="No... no vale Harry Potter..." required />
+
+      <label for="correo" class="form__label">Correo encantado</label>
+      <input type="email" id="correo" class="form__input" placeholder="Ej. PacoLonia@hechicerodebar.net" required />
+
+      <label for="magia" class="form__label">Tipo de magia preferida</label>
+      <select id="magia" class="form__select" required>
+        <option value="">-- Selecciona una --</option>
+        <option value="fuego">Fuego</option>
+        <option value="agua">Agua</option>
+        <option value="aire">Aire</option>
+        <option value="tierra">Tierra</option>
+      </select>
+      <audio id="sonidoMagia" src="sound/evil.mp3" preload="auto"></audio>
+
+      <fieldset class="form__fieldset">
+        <legend class="form__label">¿Tienes varita?</legend>
+        <label class="form__option">
+          <input type="radio" name="varita" value="si" required />
+          Sí
+        </label>
+        <label class="form__option">
+          <input type="radio" name="varita" value="no" required />
+          No
+        </label>
+      </fieldset>
+
+      <label class="form__checkbox">
+        <input type="checkbox" required />
+        Acepto las normas del Grimorio 📋
+      </label>
+
+      <label for="comentarios" class="form__label">Comentarios adicionales</label>
+      <textarea id="comentarios" class="form__textarea" rows="4"
+        placeholder="¡Mientras no sea un avada kedavra a la cabra, comenta lo que quieras!"></textarea>
+
+      <button class="magic-boton">Unirme al Club ✨</button>
+      <div class="fondo-cambiante"></div>
+    </form>
+
+    <section class="card-darkmode"><button id="toggle-mode" class="mode-toggle">&lt;DARKMODE></button>
+    </section>
+  </main>
+  <script>
+    const selectMagia = document.getElementById("magia");
+    const body = document.body;
+    const sonido = document.getElementById("sonidoMagia");
+
+    // Cambia el fondo al seleccionar una magia
+    selectMagia.addEventListener("change", function () {
+      // Elimina clases anteriores tipo "fondo--*"
+      body.className = body.className
+        .split(" ")
+        .filter(c => !c.startsWith("fondo--"))
+        .join(" ");
+
+      // Añade nueva clase si se seleccionó una magia
+      const magiaElegida = this.value;
+      if (magiaElegida) {
+        body.classList.add(`fondo--${magiaElegida}`);
+      }
+
+      // Reproduce sonido al cambiar selección
+      reproducirSonido();
+    });
+
+    // Reproduce sonido cuando el usuario abre el desplegable
+    selectMagia.addEventListener("focus", () => {
+      reproducirSonido();
+    });
+
+    // Función para reproducir el sonido
+    function reproducirSonido() {
+      if (sonido) {
+        sonido.currentTime = 0;
+        sonido.play().catch((e) => {
+          console.warn("Audio bloqueado por el navegador o sin interacción previa.", e);
+        });
+      }
+    }
+
+    const toggleButton = document.getElementById("toggle-mode");
+
+    toggleButton.addEventListener("click", function () {
+      // Cambiar el modo oscuro al cuerpo
+      document.body.classList.toggle("dark-mode");
+
+      // Cambiar el texto del botón dependiendo del modo
+      if (document.body.classList.contains("dark-mode")) {
+        toggleButton.textContent = "</DARKMODE>";
+      } else {
+        toggleButton.textContent = "<DARKMODE>";
+      }
+
+      // Opcional: Cambiar también el modo de la tarjeta
+      const card = document.querySelector(".card");
+      card.classList.toggle("card-darkmode");
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>
